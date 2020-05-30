@@ -1,24 +1,43 @@
-# README
+# データベース詳細設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Checks
 
-Things you may want to cover:
+|Column|Type|Options|
+|------|----|-------|
+|title|text|null: false|
+|explanation|text|null: false|
+|template_text|text|null: false|
+|user_id|references|foreign_key: true, index: true|
 
-* Ruby version
+### Association
+- has_many :lists
+- belongs_to :user
 
-* System dependencies
+---
+<br>
+<br>
 
-* Configuration
 
-* Database creation
+## Users
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false|
+|password|string|null: false|
+|nickname|string|null: false|
 
-* How to run the test suite
+### Association
+- has_many :checks
 
-* Services (job queues, cache servers, search engines, etc.)
+---
+<br>
+<br>
+## Lists
 
-* Deployment instructions
+|Column|Type|Options|
+|------|----|-------|
+|listname|string|null: false|
+|check_id|references|foreign_key: true, index: true|
 
-* ...
+### Association
+- belongs_to :checks
